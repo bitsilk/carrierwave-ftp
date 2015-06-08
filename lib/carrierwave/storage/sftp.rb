@@ -24,7 +24,10 @@ module CarrierWave
         def store(file)
           connection do |sftp|
             sftp.mkdir_p!(::File.dirname full_path)
+            puts "sftp.mkdir_p!(#{::File.dirname} #{full_path})"
+
             sftp.upload!(file.path, full_path)
+            puts "sftp.upload!(#{file.path}, #{full_path})"
           end
         end
 
